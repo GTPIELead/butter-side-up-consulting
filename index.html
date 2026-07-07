@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Butter Side Up Consulting — Toast POS Experts</title>
+<meta name="description" content="Toast POS consulting for restaurants. Menu, marketing, loyalty, catering, and reporting — built by an operator who runs it across 11 locations.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #E8B54D;
+    --brown: #6B4A2F;
+    --cream: #FBF6EC;
+    --charcoal: #2D2A26;
+    --muted: #8a7f72;
+    --red: #C0392B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(107,74,47,0.12);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--brown);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--brown);
+    text-decoration: none;
+    border: 1.5px solid var(--brown);
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--brown); color: var(--cream); }
+
+  /* HERO */
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+  }
+
+  .coming-soon-pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brown);
+    background: rgba(232,181,77,0.2);
+    border: 1px solid rgba(232,181,77,0.5);
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 2rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 600;
+    color: var(--brown);
+    line-height: 1.1;
+    max-width: 720px;
+    margin-bottom: 1.25rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 3rem;
+  }
+
+  /* SERVICES PREVIEW */
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 640px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .service-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brown);
+    background: rgba(107,74,47,0.07);
+    border: 1px solid rgba(107,74,47,0.15);
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+  }
+
+  /* CTA */
+  .cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta-primary {
+    display: inline-block;
+    background: var(--brown);
+    color: var(--cream);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.875rem 2.5rem;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .cta-primary:hover { background: #4e3420; transform: translateY(-1px); }
+
+  .cta-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* PROOF STRIP */
+  .proof {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .proof-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .proof-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(251,246,236,0.7);
+    letter-spacing: 0.04em;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(107,74,47,0.1);
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--brown);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* TOAST ICON SVG */
+  .toast-mark { display: block; }
+
+  @media (max-width: 480px) {
+    nav { padding: 1rem; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .proof-stats { gap: 2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Butter Side Up Consulting</span>
+  <a href="mailto:chris@buttersideupconsulting.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<main class="hero">
+  <span class="coming-soon-pill">Launching soon — Michigan & beyond</span>
+
+  <svg class="hero-icon toast-mark" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="18" y="28" width="60" height="56" rx="6" fill="#E8B54D" opacity="0.18"/>
+    <rect x="14" y="22" width="60" height="58" rx="6" fill="#FBF6EC" stroke="#6B4A2F" stroke-width="2.2"/>
+    <path d="M14 34 Q44 22 74 34" fill="#E8B54D" stroke="#6B4A2F" stroke-width="2"/>
+    <rect x="36" y="18" width="16" height="14" rx="2" fill="#E8B54D" stroke="#6B4A2F" stroke-width="1.8"/>
+    <path d="M44 32 Q46 40 45 46" stroke="#C8922A" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="44" y1="6" x2="42" y2="13" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+    <line x1="48" y1="4" x2="48" y2="12" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+    <line x1="52" y1="6" x2="54" y2="13" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <h1>Your Toast investment,<br><em>finally paying off.</em></h1>
+
+  <p class="hero-sub">Most restaurants use a fraction of what they pay Toast for. Menu, marketing, loyalty, catering, online ordering, and reporting — built right, working together, by an operator who runs it across 11 locations every day.</p>
+
+  <div class="divider-line"></div>
+
+  <div class="services">
+    <span class="service-tag">POS setup & menu management</span>
+    <span class="service-tag">Email marketing & loyalty</span>
+    <span class="service-tag">Catering & online ordering</span>
+    <span class="service-tag">Reporting & analytics</span>
+    <span class="service-tag">Multi-unit systems</span>
+    <span class="service-tag">Franchisee onboarding</span>
+  </div>
+
+  <div class="cta-block">
+    <a href="mailto:chris@buttersideupconsulting.com" class="cta-primary">Book a discovery call</a>
+    <span class="cta-note">No pitch. Just a real conversation about your Toast setup.</span>
+  </div>
+</main>
+
+<section class="proof">
+  <p class="proof-label">Proven across 11 locations</p>
+  <div class="proof-stats">
+    <div>
+      <span class="stat-num">$44,800</span>
+      <span class="stat-label">Saved annually via loyalty restructure</span>
+    </div>
+    <div>
+      <span class="stat-num">11</span>
+      <span class="stat-label">Locations running Toast daily</span>
+    </div>
+    <div>
+      <span class="stat-num">4</span>
+      <span class="stat-label">Toast service areas mastered</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Butter Side Up Consulting &nbsp;·&nbsp; Toast POS optimization for restaurants &nbsp;·&nbsp; <a href="mailto:chris@buttersideupconsulting.com">chris@buttersideupconsulting.com</a></p>
+</footer>
+
+</body>
+</html>
