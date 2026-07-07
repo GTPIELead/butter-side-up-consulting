@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Butter Side Up Consulting — Toast POS Experts</title>
-<meta name="description" content="Toast POS consulting for restaurants. Menu, marketing, loyalty, catering, and reporting — built by an operator who runs it across multiple locations every day.">
+<meta name="description" content="Toast POS consulting for restaurants. Menu, marketing, loyalty, catering, and reporting — built by an operator who runs it across 11 locations.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -172,44 +172,69 @@
     color: var(--muted);
   }
 
-  /* PROOF STRIP */
+  /* PAIN STRIP */
   .proof {
-    background: var(--brown);
-    color: var(--cream);
-    padding: 2.5rem 2rem;
+    background: #f5efe3;
+    border-top: 1px solid rgba(107,74,47,0.12);
+    border-bottom: 1px solid rgba(107,74,47,0.12);
+    padding: 3.5rem 2rem;
     text-align: center;
   }
 
   .proof-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     font-weight: 600;
+    color: var(--brown);
+    max-width: 580px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.25;
+  }
+
+  .proof-sublabel {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
   }
 
   .proof-stats {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
   }
 
-  .stat-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: var(--gold);
+  .pain-card {
+    background: #fff;
+    border: 1px solid rgba(107,74,47,0.12);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    text-align: left;
+    flex: 1;
+    min-width: 220px;
+    max-width: 240px;
+  }
+
+  .pain-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
     display: block;
-    line-height: 1;
-    margin-bottom: 0.35rem;
   }
 
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(251,246,236,0.7);
-    letter-spacing: 0.04em;
+  .pain-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 0.4rem;
+  }
+
+  .pain-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
   }
 
   /* FOOTER */
@@ -254,7 +279,16 @@
 <main class="hero">
   <span class="coming-soon-pill">Launching soon — Michigan & beyond</span>
 
-  <img src="butter-side-up-logo.png" alt="Butter Side Up Consulting logo" class="hero-icon" style="width:220px; height:auto;">
+  <svg class="hero-icon toast-mark" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="18" y="28" width="60" height="56" rx="6" fill="#E8B54D" opacity="0.18"/>
+    <rect x="14" y="22" width="60" height="58" rx="6" fill="#FBF6EC" stroke="#6B4A2F" stroke-width="2.2"/>
+    <path d="M14 34 Q44 22 74 34" fill="#E8B54D" stroke="#6B4A2F" stroke-width="2"/>
+    <rect x="36" y="18" width="16" height="14" rx="2" fill="#E8B54D" stroke="#6B4A2F" stroke-width="1.8"/>
+    <path d="M44 32 Q46 40 45 46" stroke="#C8922A" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="44" y1="6" x2="42" y2="13" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+    <line x1="48" y1="4" x2="48" y2="12" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+    <line x1="52" y1="6" x2="54" y2="13" stroke="#E8B54D" stroke-width="2" stroke-linecap="round"/>
+  </svg>
 
   <h1>Your Toast investment,<br><em>finally paying off.</em></h1>
 
@@ -278,19 +312,28 @@
 </main>
 
 <section class="proof">
-  <p class="proof-label">Proven across 11 locations</p>
+  <p class="proof-label">Most restaurants use less than half the Toast platform they're paying for.</p>
+  <p class="proof-sublabel">Here's where it's costing you right now.</p>
   <div class="proof-stats">
-    <div>
-      <span class="stat-num">$44,800</span>
-      <span class="stat-label">Saved annually via loyalty restructure</span>
+    <div class="pain-card">
+      <span class="pain-icon">🍞</span>
+      <p class="pain-title">Menu errors eating your margins</p>
+      <p class="pain-desc">Modifier gaps, missing 86s, and pricing mismatches that show up as comps and complaints.</p>
     </div>
-    <div>
-      <span class="stat-num">11</span>
-      <span class="stat-label">Locations running Toast daily</span>
+    <div class="pain-card">
+      <span class="pain-icon">🧈</span>
+      <p class="pain-title">Loyalty rewards walking out the door</p>
+      <p class="pain-desc">Default reward structures that give away more than they earn — quietly, every single week.</p>
     </div>
-    <div>
-      <span class="stat-num">4</span>
-      <span class="stat-label">Toast service areas mastered</span>
+    <div class="pain-card">
+      <span class="pain-icon">📬</span>
+      <p class="pain-title">A guest list you never market to</p>
+      <p class="pain-desc">Thousands of email addresses sitting in Toast while your competitors show up in their inbox every week.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">📊</span>
+      <p class="pain-title">Reports you don't know how to act on</p>
+      <p class="pain-desc">Toast has the data. Most operators can't translate it into a decision. We can.</p>
     </div>
   </div>
 </section>
