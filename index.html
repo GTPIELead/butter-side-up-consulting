@@ -3,19 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Butter Side Up Consulting — Toast POS Experts</title>
-<meta name="description" content="Toast POS consulting for restaurants. Menu, marketing, loyalty, catering, and reporting — built by an operator who runs it daily across multiple locations.">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<title>Butter Side Up Consulting — Toast POS, finally working for you</title>
+<meta name="description" content="Toast POS consulting for restaurants. Menu, marketing, loyalty, catering, and reporting — set up right and working together, by an operator who runs Toast every day.">
+<link rel="icon" href="Butter_side_up.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --gold: #E8B54D;
+    --gold-deep: #C8922A;
     --brown: #6B4A2F;
+    --brown-deep: #4A3120;
     --cream: #FBF6EC;
+    --cream-dark: #F3EAD8;
     --charcoal: #2D2A26;
     --muted: #8a7f72;
-    --red: #C0392B;
+    --bread: #F6E8C8;
+    --toast-light: #EDD9A3;
+    --toast-golden: #DDA94B;
+    --toast-deep: #9C6B35;
   }
 
   html { scroll-behavior: smooth; }
@@ -24,313 +32,597 @@
     font-family: 'Source Sans 3', sans-serif;
     background: var(--cream);
     color: var(--charcoal);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    line-height: 1.6;
   }
 
-  /* NAV */
+  ::selection { background: var(--gold); color: var(--brown-deep); }
+
+  h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--brown); }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ===== DONENESS BAR — signature element ===== */
+  .doneness {
+    height: 6px;
+    background: linear-gradient(90deg, var(--bread) 0%, var(--toast-light) 30%, var(--toast-golden) 65%, var(--toast-deep) 100%);
+  }
+
+  /* ===== NAV ===== */
   nav {
-    padding: 1.25rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251,246,236,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(107,74,47,0.1);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(107,74,47,0.12);
-  }
-
-  .nav-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--brown);
-    letter-spacing: 0.01em;
-  }
-
-  .nav-cta {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--brown);
-    text-decoration: none;
-    border: 1.5px solid var(--brown);
-    padding: 0.5rem 1.25rem;
-    border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .nav-cta:hover { background: var(--brown); color: var(--cream); }
-
-  /* HERO */
-  .hero {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 5rem 2rem 4rem;
-    position: relative;
-  }
-
-  .coming-soon-pill {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--brown);
-    background: rgba(232,181,77,0.2);
-    border: 1px solid rgba(232,181,77,0.5);
-    padding: 0.35rem 1rem;
-    border-radius: 100px;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-icon {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 2rem;
-  }
-
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 600;
-    color: var(--brown);
-    line-height: 1.1;
-    max-width: 720px;
-    margin-bottom: 1.25rem;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-sub {
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
-    color: var(--muted);
-    max-width: 540px;
-    line-height: 1.65;
-    margin-bottom: 3rem;
-  }
-
-  .divider-line {
-    width: 48px;
-    height: 2px;
-    background: var(--gold);
-    margin: 0 auto 3rem;
-  }
-
-  /* SERVICES PREVIEW */
-  .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    max-width: 640px;
-    margin: 0 auto 3.5rem;
-  }
-
-  .service-tag {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--brown);
-    background: rgba(107,74,47,0.07);
-    border: 1px solid rgba(107,74,47,0.15);
-    padding: 0.45rem 1rem;
-    border-radius: 4px;
-  }
-
-  /* CTA */
-  .cta-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 1rem;
   }
 
-  .cta-primary {
-    display: inline-block;
-    background: var(--brown);
-    color: var(--cream);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 0.875rem 2.5rem;
-    border-radius: 4px;
-    transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.02em;
-  }
-
-  .cta-primary:hover { background: #4e3420; transform: translateY(-1px); }
-
-  .cta-note {
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  /* PAIN STRIP */
-  .proof {
-    background: #f5efe3;
-    border-top: 1px solid rgba(107,74,47,0.12);
-    border-bottom: 1px solid rgba(107,74,47,0.12);
-    padding: 3.5rem 2rem;
-    text-align: center;
-  }
-
-  .proof-label {
+  .nav-brand {
     font-family: 'Fraunces', serif;
-    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--brown);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--brown);
-    max-width: 580px;
-    margin: 0 auto 0.75rem;
-    line-height: 1.25;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.15s;
   }
 
-  .proof-sublabel {
+  .nav-links a:hover, .nav-links a:focus-visible { opacity: 1; }
+
+  .btn {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
     font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 2.5rem;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.6rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none;
   }
 
-  .proof-stats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    max-width: 780px;
-    margin: 0 auto;
+  .btn-primary {
+    background: var(--brown);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
   }
 
-  .pain-card {
-    background: #fff;
-    border: 1px solid rgba(107,74,47,0.12);
-    border-radius: 8px;
-    padding: 1.5rem 1.75rem;
-    text-align: left;
-    flex: 1;
-    min-width: 220px;
-    max-width: 240px;
+  .btn-primary:hover, .btn-primary:focus-visible {
+    background: var(--brown-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(107,74,47,0.25);
   }
 
-  .pain-icon {
-    font-size: 1.4rem;
-    margin-bottom: 0.75rem;
+  .btn-nav { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--brown-deep);
+  }
+
+  .btn-gold:hover, .btn-gold:focus-visible {
+    background: var(--gold-deep);
+    color: var(--cream);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(200,146,42,0.35);
+  }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 4.5rem 1.5rem 5rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-logo {
+    width: min(300px, 70vw);
+    height: auto;
+    margin: 0 auto 1.5rem;
     display: block;
   }
 
-  .pain-title {
-    font-family: 'Fraunces', serif;
+  .hero h1 {
+    font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    max-width: 760px;
+    margin: 0 auto 1.25rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero-note { font-size: 0.82rem; color: var(--muted); margin-top: 1rem; }
+
+  /* ===== PAIN ===== */
+  .pain {
+    background: var(--cream-dark);
+    padding: 4.5rem 0;
+  }
+
+  .section-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 640px;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-sub {
     font-size: 1rem;
-    font-weight: 600;
-    color: var(--brown);
-    margin-bottom: 0.4rem;
-  }
-
-  .pain-desc {
-    font-size: 0.82rem;
     color: var(--muted);
-    line-height: 1.55;
+    max-width: 560px;
+    margin-bottom: 3rem;
   }
 
-  /* FOOTER */
-  footer {
-    padding: 1.5rem 2rem;
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .pain-card {
+    background: var(--cream);
+    border: 1px solid rgba(107,74,47,0.12);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pain-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(107,74,47,0.1);
+  }
+
+  .pain-num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .pain-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .pain-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+
+  /* ===== SERVICES / TIERS ===== */
+  .tiers { padding: 5rem 0; }
+
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .tier {
+    background: #fff;
+    border: 1px solid rgba(107,74,47,0.14);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .tier:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(107,74,47,0.12); }
+
+  /* toast doneness: each tier toasts deeper */
+  .tier-band { height: 8px; }
+  .tier-1 .tier-band { background: var(--toast-light); }
+  .tier-2 .tier-band { background: var(--toast-golden); }
+  .tier-3 .tier-band { background: var(--toast-deep); }
+
+  .tier-body { padding: 2rem 1.75rem; display: flex; flex-direction: column; flex: 1; }
+
+  .tier-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .tier-for {
+    font-size: 0.83rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 1.25rem;
+    min-height: 2.5em;
+  }
+
+  .tier-price {
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1;
+  }
+
+  .tier-price span { font-family: 'Source Sans 3', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+
+  .tier-features {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    flex: 1;
+  }
+
+  .tier-features li {
+    font-size: 0.89rem;
+    padding: 0.45rem 0 0.45rem 1.6rem;
+    position: relative;
+    border-bottom: 1px solid rgba(107,74,47,0.07);
+  }
+
+  .tier-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 14px;
+    height: 10px;
+    border-radius: 2px 2px 3px 3px;
+    background: var(--gold);
+    border: 1.5px solid var(--gold-deep);
+  }
+
+  .tier-2 { border-color: var(--gold); box-shadow: 0 8px 26px rgba(232,181,77,0.22); }
+
+  .tier-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brown-deep);
+    background: var(--gold);
+    border-radius: 100px;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 0.9rem;
+    align-self: flex-start;
+  }
+
+  .tier .btn { text-align: center; }
+
+  .tier-footnote {
     text-align: center;
-    border-top: 1px solid rgba(107,74,47,0.1);
-  }
-
-  footer p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--muted);
+    margin-top: 2rem;
   }
 
-  footer a {
-    color: var(--brown);
-    text-decoration: none;
-    font-weight: 600;
+  /* ===== ABOUT ===== */
+  .about {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 5rem 0;
   }
 
-  /* TOAST ICON SVG */
-  .toast-mark { display: block; }
-
-  @media (max-width: 480px) {
-    nav { padding: 1rem; }
-    .hero { padding: 3.5rem 1.25rem 3rem; }
-    .proof-stats { gap: 2rem; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
   }
+
+  @media (max-width: 820px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .about .section-eyebrow { color: var(--gold); }
+
+  .about h2 {
+    color: var(--cream);
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .about p {
+    font-size: 0.98rem;
+    color: rgba(251,246,236,0.85);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .about-creds {
+    list-style: none;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .about-creds li {
+    background: rgba(251,246,236,0.07);
+    border: 1px solid rgba(251,246,236,0.15);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+  }
+
+  .about-creds strong {
+    font-family: 'Fraunces', serif;
+    display: block;
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .about-creds span { font-size: 0.85rem; color: rgba(251,246,236,0.75); }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    padding: 5.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    line-height: 1.12;
+    max-width: 640px;
+    margin: 0 auto 1rem;
+  }
+
+  .final-cta h2 em { font-style: italic; color: var(--gold-deep); }
+
+  .final-cta p {
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 2.25rem;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid rgba(107,74,47,0.12);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  footer p { font-size: 0.82rem; color: var(--muted); }
+
+  footer a { color: var(--brown); font-weight: 600; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ===== MOTION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.in { opacity: 1; transform: none; }
+
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 
+<div class="doneness" aria-hidden="true"></div>
+
 <nav>
-  <span class="nav-logo">Butter Side Up Consulting</span>
-  <a href="mailto:chris@buttersideupconsulting.com" class="nav-cta">Get in touch</a>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">Butter Side Up Consulting</a>
+    <ul class="nav-links">
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a href="mailto:chris@buttersideupconsulting.com?subject=Discovery%20call" class="btn btn-primary btn-nav">Book a discovery call</a>
+  </div>
 </nav>
 
-<main class="hero">
-  <span class="coming-soon-pill">Launching soon — Michigan & beyond</span>
-
-<img src="Butter_side_up.svg" alt="Butter Side Up Consulting logo" class="hero-icon" style="width:min(440px, 80vw); height:auto; margin-bottom:1.0rem;">
+<header class="hero" id="top">
+  <img src="Butter_side_up.svg" alt="Butter Side Up Consulting" class="hero-logo">
   <h1>Your Toast investment,<br><em>finally paying off.</em></h1>
-
-  <p class="hero-sub">Most restaurants use a fraction of what they pay Toast for. Menu, marketing, loyalty, catering, online ordering, and reporting — built right, working together, by an operator who runs it daily across multiple locations.</p>
-
-  <div class="divider-line"></div>
-
-  <div class="services">
-    <span class="service-tag">POS setup & menu management</span>
-    <span class="service-tag">Email marketing & loyalty</span>
-    <span class="service-tag">Catering & online ordering</span>
-    <span class="service-tag">Reporting & analytics</span>
-    <span class="service-tag">Multi-unit systems</span>
-    <span class="service-tag">Franchisee onboarding</span>
+  <p class="hero-sub">Menu, marketing, loyalty, catering, online ordering, and reporting — set up right and working together, by an operator who runs Toast every single day.</p>
+  <div class="hero-ctas">
+    <a href="mailto:chris@buttersideupconsulting.com?subject=Discovery%20call" class="btn btn-primary">Book a discovery call</a>
+    <a href="#services" class="btn btn-gold">See the plans</a>
   </div>
+  <p class="hero-note">No pitch. Just a real conversation about your Toast setup.</p>
+</header>
 
-  <div class="cta-block">
-    <a href="mailto:chris@buttersideupconsulting.com" class="cta-primary">Book a discovery call</a>
-    <span class="cta-note">No pitch. Just a real conversation about your Toast setup.</span>
-  </div>
-</main>
-
-<section class="proof">
-  <p class="proof-label">Most restaurants use less than half the Toast platform they're paying for.</p>
-  <p class="proof-sublabel">Here's where it's costing you right now.</p>
-  <div class="proof-stats">
-    <div class="pain-card">
-      <span class="pain-icon">🍞</span>
-      <p class="pain-title">Menu errors eating your margins</p>
-      <p class="pain-desc">Modifier gaps, missing 86s, and pricing mismatches that show up as comps and complaints.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">🧈</span>
-      <p class="pain-title">Loyalty rewards walking out the door</p>
-      <p class="pain-desc">Default reward structures that give away more than they earn — quietly, every single week.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">📬</span>
-      <p class="pain-title">A guest list you never market to</p>
-      <p class="pain-desc">Thousands of email addresses sitting in Toast while your competitors show up in their inbox every week.</p>
-    </div>
-    <div class="pain-card">
-      <span class="pain-icon">📊</span>
-      <p class="pain-title">Reports you don't know how to act on</p>
-      <p class="pain-desc">Toast has the data. Most operators can't translate it into a decision. We can.</p>
+<section class="pain" id="problem">
+  <div class="wrap">
+    <span class="section-eyebrow reveal">The problem</span>
+    <h2 class="section-title reveal">Most restaurants use less than half the Toast platform they're paying for.</h2>
+    <p class="section-sub reveal">Here's where it's costing you right now.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <span class="pain-num">Menu</span>
+        <h3>Menu errors eating your margins</h3>
+        <p>Modifier gaps, missing 86s, and pricing mismatches that show up as comps, complaints, and kitchen chaos.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-num">Loyalty</span>
+        <h3>Rewards walking out the door</h3>
+        <p>Default reward structures that give away more than they earn — quietly, every single week.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-num">Marketing</span>
+        <h3>A guest list you never market to</h3>
+        <p>Thousands of email addresses sitting in Toast while your competitors show up in their inbox every week.</p>
+      </div>
+      <div class="pain-card reveal">
+        <span class="pain-num">Reporting</span>
+        <h3>Reports you can't act on</h3>
+        <p>Toast has the data. Most operators can't translate it into a decision. That's the gap we close.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<section class="tiers" id="services">
+  <div class="wrap">
+    <span class="section-eyebrow reveal">Services</span>
+    <h2 class="section-title reveal">Pick your level of done.</h2>
+    <p class="section-sub reveal">Flat monthly pricing. No hourly meters. No surprise invoices. Every plan starts with a full audit of your current Toast setup.</p>
+
+    <div class="tier-grid">
+      <div class="tier tier-1 reveal">
+        <div class="tier-band" aria-hidden="true"></div>
+        <div class="tier-body">
+          <h3 class="tier-name">Fresh Slice</h3>
+          <p class="tier-for">For single locations that need Toast maintained and working.</p>
+          <p class="tier-price">$795<span> /month</span></p>
+          <ul class="tier-features">
+            <li>Monthly menu updates and pricing changes</li>
+            <li>One email campaign per month — built, sent, reported</li>
+            <li>Quarterly loyalty program health check</li>
+            <li>Monthly 30-minute review call</li>
+            <li>Email support with 48-hour response</li>
+          </ul>
+          <a href="mailto:chris@buttersideupconsulting.com?subject=Fresh%20Slice%20plan" class="btn btn-primary">Start with Fresh Slice</a>
+        </div>
+      </div>
+
+      <div class="tier tier-2 reveal">
+        <div class="tier-band" aria-hidden="true"></div>
+        <div class="tier-body">
+          <span class="tier-tag">Most popular</span>
+          <h3 class="tier-name">Full Loaf</h3>
+          <p class="tier-for">For growing operators who want Toast driving revenue, not just taking orders.</p>
+          <p class="tier-price">$1,795<span> /month</span></p>
+          <ul class="tier-features">
+            <li>Everything in Fresh Slice</li>
+            <li>Two to four segmented email campaigns per month</li>
+            <li>Loyalty program management and optimization</li>
+            <li>Online ordering and catering menu management</li>
+            <li>Monthly reporting: sales, labor, menu mix, marketing ROI</li>
+            <li>Monthly 60-minute strategy call</li>
+            <li>Priority support with 24-hour response</li>
+          </ul>
+          <a href="mailto:chris@buttersideupconsulting.com?subject=Full%20Loaf%20plan" class="btn btn-gold">Go Full Loaf</a>
+        </div>
+      </div>
+
+      <div class="tier tier-3 reveal">
+        <div class="tier-band" aria-hidden="true"></div>
+        <div class="tier-body">
+          <h3 class="tier-name">The Bakery</h3>
+          <p class="tier-for">For multi-unit groups and franchisors. Custom scoped.</p>
+          <p class="tier-price">$3,500<span> from /month</span></p>
+          <ul class="tier-features">
+            <li>Everything in Full Loaf, across all locations</li>
+            <li>System-wide menu architecture and version control</li>
+            <li>Franchisee onboarding and training programs</li>
+            <li>Location-vs-location performance benchmarking</li>
+            <li>New location Toast builds and openings</li>
+            <li>Quarterly leadership review</li>
+            <li>Direct line access</li>
+          </ul>
+          <a href="mailto:chris@buttersideupconsulting.com?subject=The%20Bakery%20plan" class="btn btn-primary">Talk multi-unit</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="tier-footnote">Need a one-time project instead? Menu rebuilds, catering module builds, loyalty overhauls, and new location setups are available at fixed prices. <a href="mailto:chris@buttersideupconsulting.com?subject=Project%20inquiry" style="color:var(--brown); font-weight:600;">Ask about project work.</a></p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="section-eyebrow reveal">About</span>
+      <h2 class="reveal">Built by an operator, not an agency.</h2>
+      <p class="reveal">I'm Chris. I've spent my career inside restaurants — running operations for a multi-unit scratch bakery and restaurant brand, standing at the KDS during Friday rushes, and living in Toast every single day.</p>
+      <p class="reveal">I've built the menus, run the email campaigns, restructured the loyalty programs, rebuilt the catering systems, and turned the reports into decisions. Not in theory. In production, with real revenue on the line.</p>
+      <p class="reveal">Butter Side Up exists because I kept watching operators pay for a platform they were barely using. The gap between what Toast can do and what most restaurants get from it is enormous — and closing that gap is the fastest ROI in your building.</p>
+    </div>
+    <ul class="about-creds">
+      <li class="reveal"><strong>Operator first</strong><span>VP of Operations for a multi-unit restaurant and bakery brand — the person on the other side of the table, not a vendor.</span></li>
+      <li class="reveal"><strong>Toast power user</strong><span>Menus, marketing, loyalty, catering, online ordering, reporting, and API integrations — run daily in live operations.</span></li>
+      <li class="reveal"><strong>Army veteran</strong><span>Systems, discipline, and follow-through. When something's promised, it ships.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2 class="reveal">Ready to land <em>butter side up?</em></h2>
+  <p class="reveal">A 30-minute call. You'll walk away with at least one fix you can make this week — whether we work together or not.</p>
+  <a href="mailto:chris@buttersideupconsulting.com?subject=Discovery%20call" class="btn btn-primary reveal">Book a discovery call</a>
+</section>
+
+<div class="doneness" aria-hidden="true"></div>
+
 <footer>
-  <p>Butter Side Up Consulting &nbsp;·&nbsp; Toast POS optimization for restaurants &nbsp;·&nbsp; <a href="mailto:chris@buttersideupconsulting.com">chris@buttersideupconsulting.com</a></p>
+  <p>Butter Side Up Consulting &nbsp;·&nbsp; Toast POS optimization for restaurants &nbsp;·&nbsp; Michigan &amp; beyond &nbsp;·&nbsp; <a href="mailto:chris@buttersideupconsulting.com">chris@buttersideupconsulting.com</a></p>
 </footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 
 </body>
 </html>
